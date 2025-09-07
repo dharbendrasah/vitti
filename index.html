@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vitti Quiz | Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 
@@ -13,11 +14,11 @@
   <div id="main">
     <section class="home">
       <nav class="nav">
-        <div class="nav-wrapper">
+        <div class="nav-wrapper container">
           <h1>Vitti.</h1>
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#footer">About</a></li>
             <li><a href="#">DevTools</a></li>
             <li><a href="#">Login</a></li>
           </ul>
@@ -25,7 +26,7 @@
       </nav>
 
       <div class="hero">
-        <div class="hero-wrapper">
+        <div class="hero-wrapper container">
           <div class="headings">
             <h2 class="heading">Test Your Knowledge Anytime !!</h2>
             <p class="sub-heading">Fun and interactive quizzes to learn and compete</p>
@@ -34,6 +35,64 @@
           <form class="form">
             <input type="text" placeholder="Enter topic to play..." />
             <button>Start Quiz</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer" id="footer">
+      <div class="footer-wrapper container">
+        <div class="about">
+          <h2>Viti.</h2>
+          <div class="para-container">
+            <p>
+              A modern and amazing quiz app to boost your knowledge. It is not just a quiz app it is a platform that
+              provides the world wide information within your hand that you can for
+              your to build your skills.
+            </p>
+            <p>
+              We can continuously working hard to provide you best information through our platform. Just type the
+              topic, hit enter and let us to surf you better question to practice.
+            </p>
+          </div>
+
+          <div class="icons-container">
+            <a href="#">
+              <i class="ri-twitter-x-line"></i>
+            </a>
+            <a href="#">
+              <i class="ri-linkedin-box-fill"></i>
+            </a>
+            <a href="#">
+              <i class="ri-instagram-line"></i>
+            </a>
+            <a href="#">
+              <i class="ri-facebook-circle-fill"></i>
+            </a>
+          </div>
+
+          <a href="#main" class="back-to-top">
+            <i class="ri-arrow-up-line"></i>
+            BACK TO TOP
+          </a>
+        </div>
+
+        <div class="legal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Services</a></li>
+            <li><a href="#">Lawyer`s Concerns</a></li>
+          </ul>
+        </div>
+
+        <div class="contact">
+          <h4>Contact us</h4>
+          <form>
+            <input type="text" name="fullname" placeholder="Fullname" />
+            <input type="email" name="email" placeholder="Email" />
+            <textarea name="message" placeholder="Message" rows="5"></textarea>
+            <button>Submit</button>
           </form>
         </div>
       </div>
