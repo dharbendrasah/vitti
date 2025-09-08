@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vitti Quiz | Home</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -32,9 +32,9 @@
             <p class="sub-heading">Fun and interactive quizzes to learn and compete</p>
           </div>
 
-          <form class="form">
-            <input type="text" placeholder="Enter topic to play..." />
-            <button>Start Quiz</button>
+          <form class="form" id="form">
+            <input id="search" type="text" name="search" placeholder="Enter topic to play..." />
+            <button id="start-quiz-btn">Start Quiz</button>
           </form>
         </div>
       </div>
@@ -77,15 +77,6 @@
           </a>
         </div>
 
-        <div class="legal">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Services</a></li>
-            <li><a href="#">Lawyer`s Concerns</a></li>
-          </ul>
-        </div>
-
         <div class="contact">
           <h4>Contact us</h4>
           <form>
@@ -95,11 +86,21 @@
             <button>Submit</button>
           </form>
         </div>
+
+        <div class="legal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Services</a></li>
+            <li><a href="#">Lawyer`s Concerns</a></li>
+          </ul>
+        </div>
       </div>
     </section>
   </div>
 
-  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
