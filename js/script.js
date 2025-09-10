@@ -1,6 +1,7 @@
 window.onload = () => {
 
   const form = document.querySelector("#form");
+  console.log(form);
   const search = document.querySelector("#search");
   const startQuizBtn = document.querySelector("#start-quiz-btn");
 
@@ -185,7 +186,7 @@ window.onload = () => {
   }
 
   // startQuiz();
-  // form.addEventListener("submit", startQuiz);
+  form.addEventListener("submit", startQuiz);
 
   // select category filter logic
   const selectCategory = document.querySelector("#select-category");
@@ -417,12 +418,12 @@ window.onload = () => {
     ]
   };
 
-  const fetchData = async (category = 'general knowledge') => {
-    const api = `https://the-trivia-api.com/v2/questions?categories=${category}&limit=6`;
-    const res = await fetch(api);
-    const data = await res.json();
-    return data;
-  }
+  // const fetchData = async (category = 'general knowledge') => {
+  //   const api = `https://the-trivia-api.com/v2/questions?categories=${category}&limit=6`;
+  //   const res = await fetch(api);
+  //   const data = await res.json();
+  //   return data;
+  // }
 
   const displayCategory = async (category = "general knowledge") => {
     let data = "";
