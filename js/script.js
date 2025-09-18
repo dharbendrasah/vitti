@@ -1,14 +1,12 @@
 window.onload = () => {
 
   const form = document.querySelector("#form");
-  console.log(form);
   const search = document.querySelector("#search");
   const startQuizBtn = document.querySelector("#start-quiz-btn");
 
   const startQuiz = (e) => {
     e.preventDefault();
     const searchVal = search.value.trim();
-    let currentIdx = 0;
     let attemptedAns = new Array(5).fill(null);
     let score = 0;
     const qns = [
@@ -40,7 +38,7 @@ window.onload = () => {
     ];
 
     Swal.fire({
-      // title: "Playing Quiz !!",
+      title: "Vitti.",
       allowOutsideClick: false,
       showConfirmButton: false,
       showCloseButton: true,
@@ -59,94 +57,63 @@ window.onload = () => {
         `
       },
       html: `
-      <div class="quiz-popup" id="quiz-popup" autofocus="off">
-        <form class="qn-container" id="qn-container">
-          
-        </form>
-
-        <div class="prev-next-btns">
-          <button class="prev-btn" id="prev-btn"><i class="ri-arrow-left-s-line"></i></button>
-          <button class="next-btn" id="next-btn"><i class="ri-arrow-right-s-line"></i></button>
+        <div class="quiz-popup" id="quiz-popup" autofocus="off">
+          <form class="qn-container" id="qn-container"></form>
+          <button class="submit-btn" form="qn-container">Submit</button>
         </div>
-
-        <button class="submit-btn" form="qn-container">Submit</button>
-      </div>
       `
     });
 
-    const prevBtn = document.querySelector("#prev-btn");
-    const nextBtn = document.querySelector("#next-btn");
     const quizPopup = document.querySelector("#quiz-popup");
     const qnContainer = document.querySelector("#qn-container");
 
-    const embedQuestion = (obj) => {
-      const str = `
-        <h5 class="qn">${obj.question}</h5>
-        <div class="ans-container">
-          <div class="form-group">
-            <label>${obj.options[0]}</label>
-            <input type="radio" name="ans" value=${obj.options[0]} />
+    const embedQuestion = (qns) => {
+      let content = "";
+      qns.forEach((obj, idx) => {
+        const str = `
+          <div class="single-qn-container">
+            <h5 class="qn">${idx+1}. ${obj.question}</h5>
+            <div class="ans-container">
+              <div class="form-group">
+                <label>${obj.options[0]}</label>
+                <input type="radio" name="${idx+1}" value="${obj.options[0]}" />
+              </div>
+              <div class="form-group">
+                <label>${obj.options[1]}</label>
+                <input type="radio" name="${idx+1}" value="${obj.options[1]}" />
+              </div>
+              <div class="form-group">
+                <label>${obj.options[2]}</label>
+                <input type="radio" name="${idx+1}" value="${obj.options[2]}" />
+              </div>
+              <div class="form-group">
+                <label>${obj.options[3]}</label>
+                <input type="radio" name="${idx+1}" value="${obj.options[3]}" />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>${obj.options[1]}</label>
-            <input type="radio" name="ans" value=${obj.options[1]} />
-          </div>
-          <div class="form-group">
-            <label>${obj.options[2]}</label>
-            <input type="radio" name="ans" value=${obj.options[2]} />
-          </div>
-          <div class="form-group">
-            <label>${obj.options[3]}</label>
-            <input type="radio" name="ans" value=${obj.options[3]} />
-          </div>
-        </div>
-      `;
+        `;
+        content += str;
+      })
 
-      qnContainer.innerHTML = str;
+      qnContainer.innerHTML = content;
     }
 
-    const enableDisable = () => {
-      if (currentIdx >= 1 && currentIdx <= qns.length - 2) {
-        nextBtn.removeAttribute("disabled");
-        prevBtn.removeAttribute("disabled");
-      }
-      else if (currentIdx === 0) {
-        prevBtn.setAttribute("disabled", "true");
-      }
-      else if (currentIdx >= qns.length - 1) {
-        nextBtn.setAttribute("disabled", "true");
-        prevBtn.removeAttribute("disabled");
-      }
-      else {
-        nextBtn.removeAttribute("disabled");
-        prevBtn.removeAttribute("disabled");
-      }
-    }
-
-    enableDisable();
-    embedQuestion(qns[currentIdx]);
-
-    prevBtn.addEventListener("click", () => {
-      currentIdx--;
-      embedQuestion(qns[currentIdx]);
-      enableDisable();
-    });
-
-    nextBtn.addEventListener("click", () => {
-      currentIdx++;
-      embedQuestion(qns[currentIdx]);
-      enableDisable();
-    });
+    embedQuestion(qns);
 
     qnContainer.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log("submit bhayo hai...");
+
+      const formData = new FormData (e.target);
+      for(const [num, ans] of formData) {
+        attemptedAns[num-1] = ans;
+      }
+
       qns.forEach((obj, idx) => {
         if (attemptedAns[idx] === obj.correct)
           score++;
       });
 
-      console.log("Score is : ", score);
       Swal.close();
 
       Swal.fire({
@@ -174,14 +141,6 @@ window.onload = () => {
           `
         }
       });
-
-      // resetting the variables so that it can have fresh data for the next time.
-      score = 0;
-      attemptedAns.fill(null);
-    });
-
-    qnContainer.addEventListener("change", (e) => {
-      attemptedAns[currentIdx] = e.target.value;
     });
   }
 
