@@ -74,6 +74,7 @@ ul li {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100%;
   background-color: var(--color-bg);
 }
@@ -123,9 +124,9 @@ ul li {
   width: 190px;
 }
 
-.hero-wrapper .section-title-tagline .section-title {
+.hero-wrapper .section-title {
   margin-top: -2rem;
-  color: #2980bc;
+  /* color: #2980bc; */
 }
 
 .hero-wrapper .form {
@@ -150,6 +151,9 @@ ul li {
   padding: 0.8rem 2rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  border: 1px solid #dadce0;
+  box-shadow: 0px 3px 10px 0px rgba(31, 31, 31, 0.08);
 }
 
 .hero-wrapper .form input::placeholder {
@@ -162,8 +166,8 @@ ul li {
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   color: var(--text-inverse);
-  /* background-color: var(--color-button-bg); */
-  background-color: #2980bc;
+  background-color: var(--color-button-bg);
+  /* background-color: #2980bc; */
 
   transition: color, background-color, 0.3s ease-in-out;
 }
@@ -308,9 +312,6 @@ ul li {
   gap: 1.5rem;
 }
 
-.qn-container .single-qn-container {
-}
-
 .qn-container .qn {
   text-align: left;
   font-size: 14px;
@@ -376,13 +377,15 @@ ul li {
 
 /* ********** featured section styling ********** */
 .featured-wrapper,
-.category-wrapper {
+.category-wrapper,
+.devtools-wrapper {
   min-height: 100vh;
   padding-block: 5rem;
 }
 
 .featured-cards,
-.category-cards {
+.category-cards,
+.devtools-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4vw;
@@ -391,7 +394,8 @@ ul li {
 }
 
 .featured-card,
-.category-card {
+.category-card,
+.devtools-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -402,17 +406,20 @@ ul li {
 }
 
 .featured-card .icon,
-.category-card .icon {
+.category-card .icon,
+.devtools-card .icon {
   font-size: 2rem;
 }
 
 .featured-card .title,
-.category-card .title {
+.category-card .title,
+.devtools-card .title {
   margin-top: 1rem;
 }
 
 .featured-card .description,
-.category-card .description {
+.category-card .description,
+.devtools-card .description {
   text-align: center;
   color: var(--color-text-secondary);
   font-size: 14px;
@@ -420,7 +427,8 @@ ul li {
 }
 
 .featured-card .btn,
-.category-card .btn {
+.category-card .btn,
+.devtools-card .btn {
   margin-top: 0.7rem;
   background-color: var(--color-button-bg);
   color: var(--text-inverse);
@@ -434,7 +442,8 @@ ul li {
 }
 
 .featured-card .btn:hover,
-.category-card .btn:hover {
+.category-card .btn:hover,
+.devtools-card .btn:hover {
   background-color: var(--color-button-bg-hover);
 }
 
